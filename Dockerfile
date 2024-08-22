@@ -1,4 +1,4 @@
-FROM docker.io/sabby404/demo-docker-repository/node:16
+FROM docker.io/sabby404/demo-docker-repository
 
 
 
