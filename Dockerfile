@@ -1,5 +1,4 @@
-FROM sabby404/demodockerregistry/hub.docker.com/repositories/sabby404
-
+FROM sabby404/demo-docker-repository/node:16
 
 
 # Create app directory
