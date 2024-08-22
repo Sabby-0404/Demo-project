@@ -1,4 +1,4 @@
-FROM sabby404/demodockerregistry
+FROM docker.io/sabby404/demodockerregistry
 
 
 
