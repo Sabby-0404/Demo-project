@@ -1,4 +1,4 @@
-FROM hub.docker.com/repositories/sabby404
+FROM sabby404/demodockerregistry/hub.docker.com/repositories/sabby404
 
 
 
