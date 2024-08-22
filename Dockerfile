@@ -1,4 +1,4 @@
-FROM docker.io/sabby404/demo-docker-repository
+FROM sabby404/demodockerregistry
 
 
 
