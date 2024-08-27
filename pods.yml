@@ -7,7 +7,6 @@ metadata:
 spec:
   containers:
     - name: nodeapp
-      image: sabby404/demo-docker-repository:tagVersion
+      image: sabby404/demo-docker-repository:tagversion
       ports:
         - containerPort: 8080
-
