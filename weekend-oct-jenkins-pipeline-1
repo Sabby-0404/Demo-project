@@ -1,25 +1,25 @@
 node{
 	def dockerTag = getLatestCommitId()
-	def devIp = '172.31.6.150'
+	def devIp = '172.31.1.31'
     stage("SCM Checkout"){
         git credentialsId: 'git-hub', 
             url: 'https://github.com/javahometech/node-app',
             branch: 'master'
     }
     stage('Docker - Build & Push'){
-        sh script: "docker build . -t kammana/node-app:${dockerTag} "
+        sh script: "podman build . -t sabby404/node-app:${dockerTag} "
         
         withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-            sh script: "docker login -u kammana -p ${dockerHubPwd}"
+            sh script: "podman login -u sabby404 -p ${dockerHubPwd}"
         }
         
-        sh script: "docker push kammana/node-app:${dockerTag}"
+        sh script: "podman push sabby404/node-app:${dockerTag}"
     }
 	
 	stage('Dev Deploy'){
 		sh returnStatus: true, script: "ssh ec2-user@${devIp} docker rm -f nodeapp"
-		sh returnStatus: true, script: 'ssh ec2-user@${devIp} docker rmi $(docker images | grep kammana/node-app | awk \'{print $3}\')'
-	    sh "ssh ec2-user@${devIp} docker run -d -p 8080:8080 --name=nodeapp kammana/node-app:${dockerTag}"	
+		sh returnStatus: true, script: 'ssh ec2-user@${devIp} docker rmi $(docker images | grep sabby404/node-app | awk \'{print $3}\')'
+	    sh "ssh ec2-user@${devIp} podman run -d -p 8080:8080 --name=nodeapp sabby404/node-app:${dockerTag}"	
 	}
 }
 
