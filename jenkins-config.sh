@@ -7,8 +7,8 @@ podman login -u sabby404 -p yourpassword
 
 podman push $docker_app
 
-scp -i /var/lib/jenkins/dev.pem deploy.sh ec2-user@172.31.43.90:/tmp
+scp -i /var/lib/jenkins/dev.pem deploy.sh ec2-user@172.31.1.31:/tmp
 
-ssh -i /var/lib/jenkins/dev.pem ec2-user@172.31.43.90 chmod +x /tmp/deploy.sh
+ssh -i /var/lib/jenkins/dev.pem ec2-user@172.31.1.31 chmod +x /tmp/deploy.sh
 
-ssh -i /var/lib/jenkins/dev.pem ec2-user@172.31.43.90 /tmp/deploy.sh $docker_app
+ssh -i /var/lib/jenkins/dev.pem ec2-user@172.31.1.31 /tmp/deploy.sh $docker_app
