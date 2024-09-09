@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         }
-}
+
         stage('Apply to Kubernetes') {
             steps {
                  withCredentials([string(credentialsId: 'jenkins-secret', variable: 'KUBE_TOKEN')]) {
