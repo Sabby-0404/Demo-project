@@ -28,10 +28,10 @@ pipeline {
         stage('Apply to Kubernetes') {
             steps {
                  withCredentials([string(credentialsId: 'jenkins-secret', variable: 'KUBE_TOKEN')]) {
-                     sh '''
+                    
                         kubectl config set-credentials jenkins-user --token=$KUBE_TOKEN
                         kubectl config set-context --current --user=jenkins-user
-                    '''
+                
                 sh "chmod +x changeTag.sh"
                 sh "./changeTag.sh ${DOCKER_TAG}"
                 sh "rm -rf pods.yml buildspec.yml"
@@ -46,4 +46,5 @@ pipeline {
 
 def getDockerTag() {
     return sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
-}
+ }
+}   
