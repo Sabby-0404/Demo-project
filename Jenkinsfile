@@ -15,7 +15,7 @@ pipeline {
                 sh "podman build . -t sabby404/demo-docker-repository:${DOCKER_TAG}"
             }
         }
-}
+
         stage('DockerHub Push') {
             steps {
                 withCredentials([string(credentialsId: 'Sabby404', variable: 'dockerHubPwd')]) {
@@ -40,7 +40,7 @@ pipeline {
             }
         }
     }
-}
+
 
 
 
