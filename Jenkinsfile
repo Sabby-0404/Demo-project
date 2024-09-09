@@ -9,7 +9,7 @@ pipeline {
                 }
             }
         }
-
+    }
         stage('Build Docker Image') {
             steps {
                 sh "podman build . -t sabby404/demo-docker-repository:${DOCKER_TAG}"
