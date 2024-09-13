@@ -12,7 +12,7 @@ pipeline {
         stage('DockerHub Push'){
 	    steps{
             withCredentials([string(credentialsId: 'Sabby404', variable: 'dockerHubPwd')]) {
-                sh "docker login -u sabby404 -p ${dockerHubPwd}"
+                sh "podman login -u sabby404 -p ${dockerHubPwd}"
 		sh "podman push sabby404/demo-docker-repository:${DOCKER_TAG}"  
             }
         }
