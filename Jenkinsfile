@@ -16,6 +16,7 @@ pipeline {
 		sh "podman push sabby404/demo-docker-repository:${DOCKER_TAG}"  
             }
         }
+     }	
         stage('apply to kubernetes'){
             steps{
 		sh "chmod +x changeTag.sh"
